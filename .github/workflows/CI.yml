@@ -86,31 +86,13 @@ jobs:
       - name: Unit-test the SDK build
         run: dotnet test $env:Solution_Name --configuration ${{ matrix.configuration }} --no-build --blame --verbosity normal --collect "Code Coverage" 
 
-      #- run: |	
-      #    mkdir -p ${{ github.workspace }}/artifacts
-      #    echo hello > ${{ github.workspace }}/artifacts/world.txt
-
-      # Upload the MSIX package: https://github.com/marketplace/actions/upload-artifact
-      #- name: Upload build artifacts
-      #  uses: actions/upload-artifact@v2
-      #  with:
-      #    name: 'SDK-build'
-      #    path: ${{ github.workspace }}/artifacts/**/*
-
-#  sonarcloud:
-#    runs-on: ubuntu-latest
-#    steps:
-#      - name: Checkout the SDK's codebase
-#        uses: actions/checkout@v2
-#        with:
-#          # Disabling shallow clone is recommended for improving relevancy of reporting
-#          fetch-depth: 0
-#
-#      - name: SonarCloud Scan
-#        uses: SonarSource/sonarcloud-github-action@v1.3
-#        with: 
-#          # Set the sonar.projectBaseDir analysis property
-#          projectBaseDir: . # optional, default is .
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      - name: Pack
+        if: matrix.os == 'ubuntu-latest'
+        run: dotnet pack -v normal -c Release --no-restore --include-symbols 
+        
+      - name: Upload Artifact
+        if: matrix.os == 'ubuntu-latest'
+        uses: actions/upload-artifact@v2
+        with:
+          name: nupkg
+          path: ./src/**/bin/Release/*.nupkg
