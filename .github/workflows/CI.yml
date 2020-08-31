@@ -40,10 +40,10 @@ name: CI workflow
 
 on:
   push:
-    branches: [ master, LTS-* ]
+    branches: [ beezup-nugets ]
     tags: [ v* ]
   pull_request:
-    branches: [ master, LTS-* ]
+    branches: [ beezup-nugets ]
     tags: [ v* ]
 
 jobs:
