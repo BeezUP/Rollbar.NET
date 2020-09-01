@@ -1,3 +1,39 @@
+# THIS IS A FORK, for @BeezUP needs.
+- https://github.com/rollbar/Rollbar.NET/issues/552
+- https://github.com/rollbar/Rollbar.NET/issues/529
+
+This repository will not be maintained and will be removed when the officiel Rollbar client will merge our pull request or address the issues we submitted.
+We'll publish the packages privatly so if you need the same feature as us, just ask and we'll try our best to publish more publicly.
+But the best way to have those feature to be available is to ask the official Rollbar Client to do so : https://github.com/rollbar/Rollbar.NET/issues
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Rollbar.NET Notifier SDK
 
 A .NET Rollbar Client/Notifier that can be used in any application built on the following .NET versions: .NET Core 2.0+, .NET Standard 2.0+, .NET Full Framework 4.5+, Mono, Xamarin, and, in general, any implementation of the .NET Standard 2.0+.
